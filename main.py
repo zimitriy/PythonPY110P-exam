@@ -1,16 +1,24 @@
-# This is a sample Python script.
+from faker import Factory
+from faker import Faker
+fake1 = Factory.create()
+from conf import MODEL
+import random
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+title = list(open('books.txt'))
+
+def books():
+    fields = {
+        'title': random.choice(title).rstrip(),
+        'year': random.randrange(1900, 2023),
+        'pages': random.randrange(1000),
+        'isbn13': fake1.isbn13(),
+        'rating': round(random.uniform(0.0, 5.0), 1),
+        'price': round(random.uniform(0, 1000), 2),
+        'author': fake1.name()
+    }
+    # return {key: value for key, value in fields.items()}
+    for key, value in fields.items():
+        print(f'{key}-{value}')
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+print(books())
