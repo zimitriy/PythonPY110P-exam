@@ -1,6 +1,6 @@
 import json
 from random import randint
-from random uniform
+from random import uniform
 from faker import Faker
 from conf import MODEL
 
