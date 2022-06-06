@@ -4,6 +4,7 @@ from random import uniform
 from faker import Faker
 from conf import MODEL
 
+
 pk = 1
 
 
@@ -37,8 +38,7 @@ def get_price():
 def get_author():
     fake = Faker()
     Faker.seed()
-    authors = [fake.name() for i in range(randint(0, 3))]
-    return authors
+    return [fake.name() for authors in range(randint(1, 3))]
 
 
 def get_pk():
@@ -68,7 +68,7 @@ def generate_books(count, init_pk=None):
     return books
 
 
-def main():
+def books():
     books = generate_books(100)
     with open("result.json", "w") as json_file:
         json_string = json.dumps(books, indent=3)
@@ -76,4 +76,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    books()
